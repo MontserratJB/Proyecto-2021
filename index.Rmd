@@ -1,0 +1,84 @@
+---
+title: "Presupuestos Participativos"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+```{r import, warning=FALSE, message=FALSE}
+# Paquete para manipulación de datos
+library(dplyr)
+
+# Paquete para manejo de datos vectoriales
+library(sf)
+
+# Paquetes para manejo de datos raster
+library(terra)
+library(raster)
+
+# Paquete para mapas interactivos
+library(leaflet)
+
+# Paquetes para graficación
+library(ggplot2)
+library(plotly)
+
+library(DT)
+```
+
+```{r cargadatos}
+# Lectura de una capa vectorial (GeoJSON) de provincias de Costa Rica
+proyectos <-
+  st_read(
+    "https://github.com/tpb728O-programaciongeoespacialr/2021ii/raw/main/datos/ign/delimitacion-territorial-administrativa/provincias.geojson",
+    quiet = TRUE
+  )
+
+# Lectura de un archivo CSV con registros de presencia de felinos en Costa Rica
+felidae <-
+  st_read(
+    "/vsicurl/https://raw.githubusercontent.com/tpb728O-programaciongeoespacialr/2021ii/main/datos/gbif/felidae.csv",
+    options = c(
+      "X_POSSIBLE_NAMES=decimalLongitude",
+      "Y_POSSIBLE_NAMES=decimalLatitude"
+    ),
+    quiet = TRUE
+  )
+
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Tabla de datos Presupuesto
+
+```{r}
+
+```
+
+### Mapa
+
+```{r}
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Grafico Presupuesto
+
+```{r}
+
+```
+
+### Gráfico Distritos
+
+```{r}
+
+```
+
