@@ -1,20 +1,20 @@
-OBJECTID;No_Proyecto;Inversión;Presupuesto;Estado;Distrito
+OBJECTID;No_Proyecto;Inversion;Presupuesto;Estado;Distrito
 1;1;Mantenimiento al establecimiento del CEN CINAI en Vargas Araya;34802450;Reactivado;San Pedro
-2;2;Construcción de un aula tecnológica en la Escuela de Santa Marta;12000000;Reactivado;San Pedro
-3;3;Construcción de cancha múltiple techada para la Escuela Barrio Pinto;24656869;Reactivado;San Pedro
-4;4;Restauración y mejoras al salón comunal de la Urbanización el Cedral;23030992;Reactivado;San Pedro
-5;1;Remodelación de la fachada del kínder Escuela Inglaterra;2400000;Reactivado;San Rafael
-6;2;Construcción de Aceras en Salitrillos y Karpinsky;20937000;Reactivado;San Rafael
-7;3;Parque ecológico y recreativo Residencial Sol del Este, I Etapa;34190758.02;Reactivado;San Rafael
-8;4;Área Recreativa Urbanización Senderos del Bosque;21000000;Reactivado;San Rafael
-9;5;Colocación de malla ciclón en el parque Urb. Alfred Nobel;1000000;Reactivado;San Rafael
-10;2;Recuperación del espacio Público verde en la Urbanización La Arboleda;10570000;Reactivado;Sabanilla
-12;3;Construcción del parque Urbanización Paso Real;8400000;Reactivado;Sabanilla
-13;1;Remodelación y mejoras de acera y puente peatonal en Betania, colocación de rótulos en parques e imprevistos;8040000;Reactivado;Mercedes
-14;4;Salon multifuncional, Residencial Ana María Guardia;9500000;Reactivado;Sabanilla
+2;2;Construccion de un aula tecnologica en la Escuela de Santa Marta;12000000;Reactivado;San Pedro
+3;3;Construccion de cancha multiple techada para la Escuela Barrio Pinto;24656869;Reactivado;San Pedro
+4;4;Restauracion y mejoras al salon comunal de la Urbanizacion el Cedral;23030992;Reactivado;San Pedro
+5;1;Remodelacion de la fachada del kinder Escuela Inglaterra;2400000;Reactivado;San Rafael
+6;2;Construccion de Aceras en Salitrillos y Karpinsky;20937000;Reactivado;San Rafael
+7;3;Parque ecologico y recreativo Residencial Sol del Este, I Etapa;34190758.02;Reactivado;San Rafael
+8;4;Area Recreativa Urbanizaci_n Senderos del Bosque;21000000;Reactivado;San Rafael
+9;5;Colocacion de malla ciclon en el parque Urb. Alfred Nobel;1000000;Reactivado;San Rafael
+10;2;Recuperacion del espacio Publico verde en la Urbanizacion La Arboleda;10570000;Reactivado;Sabanilla
+12;3;Construccion del parque Urbanizacion Paso Real;8400000;Reactivado;Sabanilla
+13;1;Remodelacion y mejoras de acera y puente peatonal en Betania, colocacion de rotulos en parques e imprevistos;8040000;Reactivado;Mercedes
+14;4;Salon multifuncional, Residencial Ana Maria Guardia;9500000;Reactivado;Sabanilla
 15;2;Mejoras y mantenimiento del parque Alma Mater Calle C;4975000;Reactivado;Mercedes
-16;3;Reconstrucción de calle de baloncesto del parque 1 Alma Mater Calle B;8553457.12;Reactivado;Mercedes
-17;4;Ampliación vertical de malla metálica sur y norte, parque 1 Amla Mater Calle B ;4272000;Reactivado;Mercedes
-19;5;Estilos de vida saludable y accesibilidad parque Residencial Guaymí;7015000;Reactivado;Mercedes
-20;1;Confección de planos constructivos, especificaciones técnicas y presupuesto para construcción de una sede para el grupo Scout 160;6000000;Reactivado;Sabanilla
-21;6;Rótulos para los parques de Betania, Alma Mater calle B, Profesores, Harvard, Buenos Aires 1 y Guaymí;600000;Reactivado;Mercedes
+16;3;Reconstruccion de calle de baloncesto del parque 1 Alma Mater Calle B;8553457.12;Reactivado;Mercedes
+17;4;Ampliacion vertical de malla metalica sur y norte, parque 1 Amla Mater Calle B ;4272000;Reactivado;Mercedes
+19;5;Estilos de vida saludable y accesibilidad parque Residencial Guaymi;7015000;Reactivado;Mercedes
+20;1;Confeccion de planos constructivos, especificaciones tecnicas y presupuesto para construccion de una sede para el grupo Scout 160;6000000;Reactivado;Sabanilla
+21;6;Rotulos para los parques de Betania, Alma Mater calle B, Profesores, Harvard, Buenos Aires 1 y Guaymi;600000;Reactivado;Mercedes

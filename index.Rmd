@@ -32,10 +32,17 @@ library(DT)
 ```
 
 ```{r cargadatos}
-# Lectura de una capa vectorial (GeoJSON) de provincias de Costa Rica
+# Lectura de una capa vectorial (GeoJSON) de presupuestos participativos de Montes de Oca
 proyectos <-
   st_read(
-    "https://github.com/tpb728O-programaciongeoespacialr/2021ii/raw/main/datos/ign/delimitacion-territorial-administrativa/provincias.geojson",
+    "https://raw.githubusercontent.com/MontserratJB/Proyecto-2021/master/Presupuestos.geojson",
+    quiet = TRUE
+  )
+
+# Lectura de una capa vectorial (GeoJSON) de distritos de Montes de Oca
+distritos <-
+  st_read(
+    "https://raw.githubusercontent.com/MontserratJB/Proyecto-2021/master/Distritos.geojson",
     quiet = TRUE
   )
 
