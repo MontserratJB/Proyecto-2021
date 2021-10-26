@@ -10,6 +10,7 @@ output:
 library(flexdashboard)
 ```
 
+
 ```{r import, warning=FALSE, message=FALSE}
 # Paquete para manipulación de datos
 library(dplyr)
@@ -31,8 +32,9 @@ library(plotly)
 library(DT)
 ```
 
+
 ```{r cargadatos}
-# Lectura de una capa vectorial (GeoJSON) de presupuestos participativos de Montes de Oca
+# Lectura de una capa vectorial (GeoJSON) de provincias proyectos de Montes de Oca
 proyectos <-
   st_read(
     "https://raw.githubusercontent.com/MontserratJB/Proyecto-2021/master/Presupuestos.geojson",
@@ -46,10 +48,10 @@ distritos <-
     quiet = TRUE
   )
 
-# Lectura de un archivo CSV con registros de presencia de felinos en Costa Rica
-felidae <-
+# Lectura de un archivo CSV con datos de Presupuestos participativos en Montes de Oca
+presupuesto <-
   st_read(
-    "/vsicurl/https://raw.githubusercontent.com/tpb728O-programaciongeoespacialr/2021ii/main/datos/gbif/felidae.csv",
+    "/vsicurl/https://raw.githubusercontent.com/MontserratJB/Proyecto-2021/master/Pres_part.csv",
     options = c(
       "X_POSSIBLE_NAMES=decimalLongitude",
       "Y_POSSIBLE_NAMES=decimalLatitude"
@@ -64,7 +66,12 @@ Column {data-width=650}
 
 ### Tabla de datos Presupuesto
 
-```{r}
+```{r tabla}
+#Tabla
+proyectos %>%
+  st_drop_geometry() %>%
+  select(No_Proyect, Inversión, Presupuest, Distrito) %>%
+datatable()
 
 ```
 
@@ -79,13 +86,31 @@ Column {data-width=350}
 
 ### Grafico Presupuesto
 
-```{r}
+```{r grafico-presupuestos}
+presupuesto %>%
+  group_by(Distrito) %>%
+  summarize(suma_Presupuesto = sum(as.numeric(Presupuesto))) %>%
+  plot_ly(x = ~ Distrito,
+          y = ~ suma_Presupuesto,
+          type="bar", color = I("green")) %>%
+  layout(title = "Presupuestos participativos por Distrito",
+         xaxis = list(title = "Distrito"),
+         yaxis = list(title = "Monto en Colones"))
 
 ```
 
 ### Gráfico Distritos
 
-```{r}
-
+```{r proyectos}
+# Gráfico de estacionalidad
+presupuesto %>%
+  group_by(Distrito) %>%
+  summarize(suma_proyectos = n()) %>%
+  plot_ly(x = ~ Distrito,
+          y = ~ suma_proyectos,
+          type="bar", mode="markers", fill = "tozeroy", fillcolor = "green") %>%
+  layout(title = "Proyectos por Distrito",
+         xaxis = list(title = "Distritos"),
+         yaxis = list(title = "Número de proyectos"))
 ```
 
