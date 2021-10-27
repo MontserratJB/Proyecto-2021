@@ -1,5 +1,5 @@
 ---
-title: "Presupuestos Participativos"
+title: "Presupuestos Participativos en el cantón de Montes de Oca"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -24,12 +24,16 @@ library(raster)
 
 # Paquete para mapas interactivos
 library(leaflet)
+library(leaflet.providers)
+library(leaflet.extras)
 
 # Paquetes para graficación
 library(ggplot2)
 library(plotly)
 
 library(DT)
+
+library(tidyverse)
 ```
 
 
@@ -61,8 +65,63 @@ presupuesto <-
 
 ```
 
+```{r carga_raster}
+# Lectura de una capa raster de altitud
+acuarela <-
+  rast(
+    "/vsicurl/https://github.com/MontserratJB/Proyecto-2021/blob/master/acuarela_wgs.tif?raw=true"
+  )
+```
+
 Column {data-width=650}
 -----------------------------------------------------------------------
+
+### Mapa
+
+```{r mapa-leaflet}
+#Conversión del objeto mapa a la clase Raster Layer
+acuarela_rl <- raster::raster(acuarela)
+
+leaflet() %>%
+  setView(lng = -84.005, lat = 9.94, zoom = 13) %>%
+  addTiles() %>% 
+  addRasterImage(
+    acuarela_rl, 
+    opacity = 0.5,
+    group = "Acuarela"
+  ) %>%  
+  addPolygons(
+    data = distritos,
+    color = "blue",
+    fillColor = "transparent",
+    stroke = TRUE,
+    weight = 3.0,
+    group = "Distritos",
+  ) %>%
+  addCircleMarkers(
+    data = proyectos,
+    stroke = F,
+    radius = 3.5,
+    fillColor = 'orange',
+    fillOpacity = 1,
+    group = "Proyectos"
+    ) %>%
+  
+addMeasurePathToolbar(
+  options = measurePathOptions(imperial = FALSE,
+  minPixelDistance = 100,
+  showDistances = TRUE)) %>%
+ 
+  addProviderTiles(
+    providers$Esri.WorldImagery, group = "ESRI") %>%
+  addProviderTiles(
+    providers$Stamen.Toner, group = "Toner") %>%
+  addLayersControl(
+    baseGroups = c("Toner","ESRI","Acuarela"),
+    overlayGroups = c("Distritos","Proyectos"),
+    options = layersControlOptions(collapsed = T)
+  )
+```
 
 ### Tabla de datos Presupuesto
 
@@ -77,13 +136,7 @@ datatable( proyectos, options = list(
 
 ```
 
-### Mapa
-
-```{r}
-
-```
-
-Column {data-width=350}
+Column {data-width=250}
 -----------------------------------------------------------------------
 
 ### Grafico Presupuesto

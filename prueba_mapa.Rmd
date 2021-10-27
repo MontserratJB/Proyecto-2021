@@ -1,0 +1,103 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r import, warning=FALSE, message=FALSE}
+# Paquete para manipulación de datos
+library(dplyr)
+
+# Paquete para manejo de datos vectoriales
+library(sf)
+
+# Paquetes para manejo de datos raster
+library(terra)
+library(raster)
+
+# Paquete para mapas interactivos
+library(leaflet)
+library(leaflet.providers)
+library(leaflet.extras)
+
+# Paquetes para graficación
+library(ggplot2)
+library(plotly)
+
+library(DT)
+
+library(tidyverse)
+```
+
+```{r cargadatos}
+# Lectura de una capa vectorial (GeoJSON) de provincias proyectos de Montes de Oca
+proyectos <-
+  st_read(
+    "https://raw.githubusercontent.com/MontserratJB/Proyecto-2021/master/Presupuestos.geojson",
+    quiet = TRUE
+  )
+
+# Lectura de una capa vectorial (GeoJSON) de distritos de Montes de Oca
+distritos <-
+  st_read(
+    "https://raw.githubusercontent.com/MontserratJB/Proyecto-2021/master/Distritos.geojson",
+    quiet = TRUE
+  )
+```
+
+```{r carga_raster}
+# Lectura de una capa raster de altitud
+altitud <-
+  rast(
+    "/vsicurl/https://raw.githubusercontent.com/tpb728O-programaciongeoespacialr/2021ii/master/datos/worldclim/altitud.tif"
+  )
+```
+
+```{r mapa-leaflet}
+#Conversión del objeto altitud a la clase Raster Layer
+altitud_rl <- raster::raster(altitud)
+
+leaflet() %>%
+  setView(lng = -84.005, lat = 9.93, zoom = 13) %>%
+  addTiles() %>% 
+  addRasterImage(
+    altitud_rl, 
+    opacity = 1,
+    group = "Altitud"
+  ) %>%  
+  addPolygons(
+    data = distritos,
+    color = "blue",
+    fillColor = "transparent",
+    stroke = TRUE,
+    weight = 3.0,
+    group = "Distritos",
+  ) %>%
+  addCircleMarkers(
+    data = proyectos,
+    stroke = F,
+    radius = 3.5,
+    fillColor = 'orange',
+    fillOpacity = 1,
+    group = "Proyectos"
+    ) %>%
+  
+addMeasurePathToolbar(
+  options = measurePathOptions(imperial = FALSE,
+  minPixelDistance = 100,
+  showDistances = TRUE)) %>%
+ 
+  addProviderTiles(
+    providers$Esri.WorldImagery, group = "ESRI") %>%
+  addProviderTiles(
+    providers$Stamen.Toner, group = "Toner") %>%
+  addLayersControl(
+    baseGroups = c("Toner","ESRI","Altitud"),
+    overlayGroups = c("Distritos","Proyectos"),
+    options = layersControlOptions(collapsed = T)
+  )
+```
+
