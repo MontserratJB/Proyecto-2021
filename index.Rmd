@@ -71,7 +71,9 @@ Column {data-width=650}
 proyectos %>%
   st_drop_geometry() %>%
   select(No_Proyect, Inversión, Presupuest, Distrito) %>%
-datatable()
+datatable( proyectos, options = list(
+  language = list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json')
+))
 
 ```
 
@@ -95,8 +97,8 @@ presupuesto %>%
           type="bar", color = I("green")) %>%
   layout(title = "Presupuestos participativos por Distrito",
          xaxis = list(title = "Distrito"),
-         yaxis = list(title = "Monto en Colones"))
-
+         yaxis = list(title = "Monto en Colones")) %>%
+  config(locale = "es")
 ```
 
 ### Gráfico Distritos
@@ -111,6 +113,7 @@ presupuesto %>%
           type="bar", mode="markers", fill = "tozeroy", fillcolor = "green") %>%
   layout(title = "Proyectos por Distrito",
          xaxis = list(title = "Distritos"),
-         yaxis = list(title = "Número de proyectos"))
+         yaxis = list(title = "Número de proyectos")) %>%
+  config(locale = "es")
 ```
 
